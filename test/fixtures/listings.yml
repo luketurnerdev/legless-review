@@ -7,6 +7,8 @@ one:
   sex: 1
   price: 1
   deposit: 1
+  city: MyString
+  state: MyString
   date_of_birth: 2019-04-19
   diet: MyString
 
@@ -17,5 +19,7 @@ two:
   sex: 1
   price: 1
   deposit: 1
+  city: MyString
+  state: MyString
   date_of_birth: 2019-04-19
   diet: MyString

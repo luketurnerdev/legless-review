@@ -7,6 +7,8 @@ class CreateListings < ActiveRecord::Migration[5.2]
       t.integer :sex
       t.integer :price
       t.integer :deposit
+      t.string :city
+      t.string :state
       t.date :date_of_birth
       t.string :diet
 
