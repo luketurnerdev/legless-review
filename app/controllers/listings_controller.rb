@@ -34,6 +34,8 @@ class ListingsController < ApplicationController
     def new 
         #shows form for creating a new listing
         @listing = Listing.new
+        #pull breeds out of the db - have been seeded
+        @breeds = Breed.all
     end
 
     def show
