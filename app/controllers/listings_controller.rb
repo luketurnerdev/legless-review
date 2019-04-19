@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
     #before action runs before anything else,
     #and it will look for a method called set_listing
     # BUT only run on these 4 methods using only keyword
-    before_action :set_listing only: [:show, :edit, :update, :destroy]
+    before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
     def create
         #creates new listing
@@ -33,6 +33,7 @@ class ListingsController < ApplicationController
 
     def new 
         #shows form for creating a new listing
+        @listing = Listing.new
     end
 
     def show
