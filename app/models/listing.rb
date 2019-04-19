@@ -6,6 +6,9 @@ class Listing < ApplicationRecord
   # in an enum --> useful for when values
   # must be something in particular
   enum sex: { female:0, male:1 }
+
+  #when we pass through 'female' in the listing
+  # it saves 
   
 
 
