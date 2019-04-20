@@ -24,9 +24,7 @@ class ListingsController < ApplicationController
         
         # byebug
     end
-
     
-
     def update
         #updates the current listing
     end
