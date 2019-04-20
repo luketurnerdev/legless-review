@@ -6,7 +6,18 @@ class ListingsController < ApplicationController
 
     def create
         #creates new listing
+
+        #we want to whitelist because we know which value
+        # to accept.
+
+        #.create creates a new record from the method
+        # which passes through the whitelisted values
+        @listing = Listing.create(listing_params)
+        
+        byebug
     end
+
+    
 
     def update
         #updates the current listing
@@ -36,6 +47,7 @@ class ListingsController < ApplicationController
         @listing = Listing.new
         #pull breeds out of the db - have been seeded
         @breeds = Breed.all
+        @sexes = Listing.sexes.keys
     end
 
     def show
@@ -55,5 +67,9 @@ class ListingsController < ApplicationController
 
         id = params[:id]
         @listing = Listing.find(id)
+    end
+
+    def listing_params
+        params.require(:listing).permit(:title, :description, :breed_id, :sex, :price, :deposit, :date_of_birth)
     end
 end
