@@ -3,7 +3,7 @@ class ListingsController < ApplicationController
     #and it will look for a method called set_listing
     # BUT only run on these 4 methods using only keyword
     before_action :set_listing, only: [:show, :edit, :update, :destroy]
-
+    before_action :set_breeds_and_sexes, only: [:new, :edit]
     def create
         #creates new listing
 
@@ -13,8 +13,16 @@ class ListingsController < ApplicationController
         #.create creates a new record from the method
         # which passes through the whitelisted values
         @listing = Listing.create(listing_params)
+
+        #if there are errors, show errors (using listing var), if not, redirect to the listings page
+        if @listing.errors.any?
+            set_breeds_and_sexes
+            render "new"
+        else
+            redirect_to listings_path
+        end
         
-        byebug
+        # byebug
     end
 
     
@@ -45,9 +53,6 @@ class ListingsController < ApplicationController
     def new 
         #shows form for creating a new listing
         @listing = Listing.new
-        #pull breeds out of the db - have been seeded
-        @breeds = Breed.all
-        @sexes = Listing.sexes.keys
     end
 
     def show
@@ -57,6 +62,11 @@ class ListingsController < ApplicationController
     #private makes set_listing only accessible inside the object
     
     private 
+
+    def set_breeds_and_sexes
+        @breeds = Breed.all
+        @sexes = Listing.sexes.keys
+    end
 
     def set_listing
         #access the params hash, and pick out 

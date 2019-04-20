@@ -8,7 +8,12 @@ class Listing < ApplicationRecord
   enum sex: { female:0, male:1 }
 
   #when we pass through 'female' in the listing
-  # it saves 
+  # it saves
+
+  #validates makes sure that data is entered
+  #sets required field with the rule of (presence).
+  #there are many different built in validation rules
+  validates :title, :breed_id, :sex, :price, :deposit, :date_of_birth, presence: true
   
 
 
